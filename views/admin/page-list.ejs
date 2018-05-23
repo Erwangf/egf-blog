@@ -83,6 +83,17 @@
         if(confirm("Are you sure you want to delete this page ? ("+shortTitle+")")){
             // TODO AJAX request to delete the page
 
+            $.ajax({
+                url: '/pages/',
+                type: 'DELETE',
+                data: {shortTitle:shortTitle},
+                success: function(result) {
+                    if(result.status === "OK"){
+                        window.location.reload();
+                    }
+                }
+            });
+
             // refresh the page
             location.reload();
         }

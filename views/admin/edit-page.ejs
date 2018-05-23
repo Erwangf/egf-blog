@@ -42,6 +42,15 @@
                     <label for="title">Title</label>
                     <input type="text" required class="form-control" id="title"
                            value= "<%= title %>" placeholder="Enter page title ...">
+                    <label for="shortTitle">Short title</label>
+                    <input type="text" required class="form-control" id="shortTitle"
+                           value= "<%= shortTitle %>" placeholder="Enter short page title ...">
+                    <label for="description">Description</label>
+                    <input type="text" required class="form-control" id="description"
+                           value= "<%= description %>" placeholder="Enter short description ...">
+                    <label for="imagePath">Image Path</label>
+                    <input type="text" required class="form-control" id="imagePath"
+                           value= "<%= imagePath %>" placeholder="Enter page title ...">
                     <label for="editor1">Content</label>
                     <textarea name="editor1" id="editor1" cols="30" rows="60"><%- content %></textarea>
                     <button class="btn btn-primary" type="submit" onclick="validatePage()">Validate</button>
@@ -59,6 +68,7 @@
 <script type="text/javascript" src="/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
 <script src="/js/ckeditor/ckeditor.js"></script>
 <script>
+    var previousShortTitle = "<%= shortTitle %>";
 
 
     CKEDITOR.config.height = 500;
@@ -68,6 +78,23 @@
     var validatePage = function () {
         // TODO send PUT request to server and redirect to posts list
         alert("EDIT !");
+        var page = {};
+        page.title = $("#title").val();
+        page.shortTitle = $("#shortTitle").val();
+        page.description = $("#description").val();
+        page.imagePath = $("#imagePath").val();
+        page.content = CKEDITOR.instances.editor1.getData();
+        console.log(page);
+        $.ajax({
+            url: '/pages/'+previousShortTitle,
+            type: 'PUT',
+            data: page,
+            success: function(result) {
+                if(result.status === "OK"){
+                    window.location.href="/admin/page-list";
+                }
+            }
+        });
     }
 </script>
 </body>
