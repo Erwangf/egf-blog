@@ -41,6 +41,12 @@
                     <h1>Create new page</h1>
                     <label for="title">Title</label>
                     <input type="text" required class="form-control" id="title" placeholder="Enter page title ...">
+                    <label for="shortTitle">Short title</label>
+                    <input type="text" required class="form-control" id="shortTitle" placeholder="Enter short page title ...">
+                    <label for="description">Description</label>
+                    <input type="text" required class="form-control" id="description" placeholder="Enter short description ...">
+                    <label for="imagePath">Image path</label>
+                    <input type="text" required class="form-control" id="imagePath" placeholder="Enter short description ...">
                     <label for="editor1">Content</label>
                     <textarea name="editor1" id="editor1" cols="30" rows="60"></textarea>
                     <button class="btn btn-primary" type="submit" onclick="createPage()">Create</button>
@@ -61,6 +67,20 @@
     var createPage = function () {
         // TODO send post request to server and redirect to posts list
         alert("create !");
+        var page = {};
+        page.title = $("#title").val();
+        page.shortTitle = $("#shortTitle").val();
+        page.description = $("#description").val();
+        page.imagePath = $("#imagePath").val();
+        page.content = CKEDITOR.instances.editor1.getData();
+        console.log(page);
+        $.post("/pages",page,function(data){
+            console.log(data);
+            if(data.status === "OK"){
+
+                window.location.href = "/admin/page-list";
+            }
+        })
     }
     CKEDITOR.config.height = 500;
     CKEDITOR.replace('editor1');</script>
