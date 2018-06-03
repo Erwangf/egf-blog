@@ -143,11 +143,11 @@
                 <li>Authentication, security</li>
                 <li>Heroku Deployment</li>
               </ul>
-            </div><!--//item-->
+            </div>
 
-          </div><!--//content-->
-        </div><!--//section-inner-->
-      </section><!--//section-->
+          </div>
+        </div>
+      </section>
 
       <section class="projects section">
         <div class="section-inner">
@@ -156,15 +156,15 @@
             <div class="item">
               <h3 class="title"><a href="#">Coming soon ;)</a></h3>
 
-            </div><!--//item-->
+            </div>
 
 
-          </div><!--//content-->
-        </div><!--//section-inner-->
-      </section><!--//section-->
+          </div>
+        </div>
+      </section>
 
 
-    </div><!--//primary-->
+    </div>
 
 
     <div class="secondary col-md-4 col-sm-12 col-xs-12">
@@ -178,9 +178,24 @@
               <li><i class="fa fa-envelope-o"></i><span class="sr-only">Email:</span><a href="#">erwan.giry.fouquet@gmail.com</a>
               </li>
             </ul>
-          </div><!--//content-->
-        </div><!--//section-inner-->
-      </aside><!--//aside-->
+          </div>
+        </div>
+      </aside>
+
+      <aside class="info aside section">
+        <div class="section-inner">
+          <h2 class="heading">Last blog posts</h2>
+          <div class="content">
+            <ul class="list-unstyled">
+              <% lastPages.forEach(function(page){ %>
+              <li>
+                <a href="/pages/<%= page.shortTitle %>" target="_blank"><%= page.title %></a>
+              </li>
+              <%}) %>
+            </ul>
+          </div>
+        </div>
+      </aside>
 
       <aside class="education aside section">
         <div class="section-inner">
