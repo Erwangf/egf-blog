@@ -39,8 +39,10 @@
             <section class="about section">
                 <div class="section-inner">
                     <h1 class="heading">Page list</h1>
+                    <% if(admin){%>
                     <a href="/admin/create-page" class="btn btn-primary"
                        role="button">Create a new page</a>
+                    <%}%>
                     <hr>
 
                     <div class="content">
@@ -56,12 +58,14 @@
                                 <div class="caption">
                                     <h3><%= page.title %></h3>
                                     <p><%= page.description %></p>
+                                    <% if(admin){%>
                                     <p>
                                         <a href="/admin/edit-page/<%= page.shortTitle %>" class="btn btn-primary"
                                            role="button">Edit</a>
 
                                         <a href="#" onclick="deletePage('<%= page.shortTitle %>')" class="btn btn-danger" role="button">Delete</a>
                                     </p>
+                                    <%}%>
                                 </div>
                             </div>
                         </div>

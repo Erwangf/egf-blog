@@ -17,11 +17,13 @@ router.get('/:shortTitle', function (req, res, next) {
 
 
 router.get('/', function (req, res, next) {
-    Page.findOne({shortTitle: 'default'}, function (err, result) {
-        res.render('page', result);
-    })
+    Page.find(function (err, pages) {
+        if (pages.length === 0) {
+            // TODO handle the case where the page doesn't exists
+        }
+        res.render("page-list", {pages:pages,admin:false});
+    });
 });
-
 router.put('/:shortTitle', function (req, res, next) {
     const shortTitle = req.params.shortTitle;
     console.log(shortTitle)

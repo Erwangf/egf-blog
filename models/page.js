@@ -7,7 +7,8 @@ let pageSchema = database.Schema({
     content: String,
     description: String,
     imagePath: {type: String, default: "/assets/images/no_image.png"},
-    tags: [{type: String}]
+    tags: [{type: String}],
+    project: {type:Boolean, default:false}
 });
 let Page = database.model('Pages', pageSchema);
 module.exports = Page;

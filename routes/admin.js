@@ -21,7 +21,7 @@ router.get('/page-list', function (req, res, next) {
         if (pages.length === 0) {
             // TODO handle the case where the page doesn't exists
         }
-        res.render("admin/page-list", {pages});
+        res.render("page-list", {pages:pages,admin:true});
     });
 
 });
