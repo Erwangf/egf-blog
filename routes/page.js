@@ -24,6 +24,7 @@ router.get('/', function (req, res, next) {
         res.render("page-list", {pages:pages,admin:false});
     });
 });
+
 router.put('/:shortTitle', function (req, res, next) {
     const shortTitle = req.params.shortTitle;
     console.log(shortTitle)
