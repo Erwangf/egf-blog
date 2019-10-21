@@ -26,5 +26,11 @@ router.get('/page-list', function (req, res, next) {
 
 });
 
+router.get('/export-all',function(req,res,next){
+    Page.find(function(err,pages){
+        res.json(pages)
+    })
+});
+
 
 module.exports = router;
